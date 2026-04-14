@@ -1,0 +1,26 @@
+# build outputs
+engine
+memory_hog
+cpu_hog
+io_pulse
+*.o
+*.ko
+*.mod*
+*.order
+*.symvers
+
+# logs
+logs/
+*.log
+
+# runtime socket
+/tmp/mini_runtime.sock
+
+# rootfs virtual dirs (VERY IMPORTANT)
+rootfs-*/proc/
+rootfs-*/sys/
+rootfs-*/dev/
+rootfs-*/run/
+
+# kernel module build temp
+*.mod.c
