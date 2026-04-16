@@ -1,8 +1,8 @@
-# 📦 OS-Jackfruit — Mini Container Runtime
+#  OS-Jackfruit — Mini Container Runtime
 
 ---
 
-# 1️⃣ Team Information
+# 1️. Team Information
 
 | Name                    | SRN              |
 | ----------------------- | ---------------- |
@@ -11,9 +11,9 @@
 
 ---
 
-# 2️⃣ Build, Load, and Run Instructions
+# 2️. Build, Load, and Run Instructions
 
-## 🔧 Step 1: Build the Project
+##  Step 1: Build the Project
 
 ```bash
 cd boilerplate
@@ -29,7 +29,7 @@ This compiles:
 
 ---
 
-## 🔌 Step 2: Load Kernel Module
+##  Step 2: Load Kernel Module
 
 ```bash
 sudo insmod monitor.ko
@@ -49,7 +49,7 @@ ls -l /dev/container_monitor
 
 ---
 
-## 🧠 Step 3: Start Supervisor
+##  Step 3: Start Supervisor
 
 ```bash
 sudo ./engine supervisor ./rootfs-base
@@ -57,7 +57,7 @@ sudo ./engine supervisor ./rootfs-base
 
 ---
 
-## 📁 Step 4: Prepare Root Filesystems
+##  Step 4: Prepare Root Filesystems
 
 ```bash
 cp -a ./rootfs-base ./rootfs-alpha
@@ -66,7 +66,7 @@ cp -a ./rootfs-base ./rootfs-beta
 
 ---
 
-## 🚀 Step 5: Start Containers
+##  Step 5: Start Containers
 
 Open another terminal and run:
 
@@ -77,7 +77,7 @@ sudo ./engine start beta ./rootfs-beta /bin/sh --soft-mib 64 --hard-mib 96
 
 ---
 
-## 📊 Step 6: List Containers
+##  Step 6: List Containers
 
 ```bash
 sudo ./engine ps
@@ -85,7 +85,7 @@ sudo ./engine ps
 
 ---
 
-## 📜 Step 7: View Logs
+##  Step 7: View Logs
 
 ```bash
 sudo ./engine logs alpha
@@ -93,7 +93,7 @@ sudo ./engine logs alpha
 
 ---
 
-## 🧪 Step 8: Run Workloads
+##  Step 8: Run Workloads
 
 Copy workload into container:
 
@@ -109,7 +109,7 @@ sudo ./engine start test ./rootfs-alpha "./memory_hog"
 
 ---
 
-## 📈 Step 9: Scheduling Experiment
+##  Step 9: Scheduling Experiment
 
 ```bash
 sudo ./engine start fast ./rootfs-alpha "./cpu_hog" --nice -5
@@ -118,7 +118,7 @@ sudo ./engine start slow ./rootfs-alpha "./cpu_hog" --nice 10
 
 ---
 
-## 🛑 Step 10: Stop Containers
+##  Step 10: Stop Containers
 
 ```bash
 sudo ./engine stop alpha
@@ -127,7 +127,7 @@ sudo ./engine stop beta
 
 ---
 
-## 📋 Step 11: Check Kernel Logs
+##  Step 11: Check Kernel Logs
 
 ```bash
 dmesg | tail
@@ -135,7 +135,7 @@ dmesg | tail
 
 ---
 
-## 🧹 Step 12: Cleanup
+##  Step 12: Cleanup
 
 ```bash
 sudo pkill -f engine
@@ -146,78 +146,85 @@ make clean
 
 ---
 
-# 3️⃣ Demo with Screenshots
+# 3️. Demo with Screenshots
 
 
 
 ---
 
-## 📸 Screenshot 1 — Multi-container Supervision
+##  Screenshot 1 — Multi-container Supervision
 
 **Caption:** Two or more containers running under one supervisor process.
 
-📷 *(Paste screenshot showing alpha and beta in running state)*
 <img width="706" height="171" alt="image" src="https://github.com/user-attachments/assets/cf6736a9-12b5-4c6a-b12d-53593ec9236a" />
 
 ---
 
-## 📸 Screenshot 2 — Metadata Tracking
+##  Screenshot 2 — Metadata Tracking
 
 **Caption:** Output of `engine ps` showing container metadata.
 
-📷 *(Paste screenshot of ps output)*
+<img width="710" height="113" alt="image" src="https://github.com/user-attachments/assets/3d468937-49e1-4f66-a1ca-51b75bbaece8" />
+
 
 ---
 
-## 📸 Screenshot 3 — Bounded-buffer Logging
+##  Screenshot 3 — Bounded-buffer Logging
 
 **Caption:** Logs captured from container showing logging pipeline.
 
-📷 *(Paste screenshot of engine logs output)*
+<img width="702" height="77" alt="image" src="https://github.com/user-attachments/assets/7c628c04-4e3c-4517-b37f-fc7664a9b541" />
+
 
 ---
 
-## 📸 Screenshot 4 — CLI and IPC
+##  Screenshot 4 — CLI and IPC
 
 **Caption:** CLI command interacting with supervisor via socket.
 
-📷 *(Paste screenshot showing command + response)*
+<img width="701" height="148" alt="image" src="https://github.com/user-attachments/assets/ef9dcdcb-7d91-4801-bd6c-bce3b77a8644" />
 
 ---
 
-## 📸 Screenshot 5 — Soft-limit Warning
+##  Screenshot 5 — Soft-limit Warning
 
 **Caption:** Kernel log showing soft memory limit warning.
 
-📷 *(Paste screenshot of dmesg output with soft limit)*
+<img width="710" height="420" alt="image" src="https://github.com/user-attachments/assets/2ddfae3e-9084-465b-be87-c9f770e3e6b6" />
+<img width="703" height="453" alt="image" src="https://github.com/user-attachments/assets/03e35ea9-0a8b-41b9-bcc5-081bac8e7f4e" />
+
 
 ---
 
-## 📸 Screenshot 6 — Hard-limit Enforcement
+##  Screenshot 6 — Hard-limit Enforcement
 
 **Caption:** Container killed after exceeding hard memory limit.
 
-📷 *(Paste screenshot showing dmesg + ps exited state)*
+<img width="707" height="435" alt="image" src="https://github.com/user-attachments/assets/b1b44a5c-42be-46c0-ad73-bb0c6335b585" />
+<img width="707" height="457" alt="image" src="https://github.com/user-attachments/assets/18000383-b4e2-44be-892b-23ecad253456" />
+
 
 ---
 
-## 📸 Screenshot 7 — Scheduling Experiment
+##  Screenshot 7 — Scheduling Experiment
 
 **Caption:** CPU scheduling difference using nice values.
 
-📷 *(Paste screenshot showing different nice values / CPU usage)*
+<img width="707" height="213" alt="image" src="https://github.com/user-attachments/assets/d33148ca-2292-4540-a71d-b2e34ef12b0e" />
+
 
 ---
 
-## 📸 Screenshot 8 — Clean Teardown
+##  Screenshot 8 — Clean Teardown
 
 **Caption:** No running containers after shutdown.
 
-📷 *(Paste screenshot of ps aux showing no containers)*
+<img width="701" height="167" alt="image" src="https://github.com/user-attachments/assets/6a2abdb5-f05b-4e82-af88-83e9f3d5caf5" />
+
 
 ---
 
-# 4️⃣ Engineering Analysis
+# 4️. Engineering Analysis
 
 ### Process Isolation
 
@@ -249,7 +256,7 @@ CPU scheduling differences are demonstrated using nice values to assign differen
 
 ---
 
-# 5️⃣ Design Decisions and Tradeoffs
+# 5️. Design Decisions and Tradeoffs
 
 ### Namespace Isolation
 
@@ -291,7 +298,7 @@ CPU scheduling differences are demonstrated using nice values to assign differen
 
 ---
 
-# 6️⃣ Scheduler Experiment Results
+# 6️ Scheduler Experiment Results
 
 ### Observations
 
@@ -314,7 +321,7 @@ This demonstrates how the Linux scheduler prioritizes processes based on nice va
 
 ---
 
-# 📌 Final Summary
+#  Final Summary
 
 This project demonstrates:
 
@@ -326,8 +333,4 @@ This project demonstrates:
 
 ---
 
-# 🚨 Before Submission
 
-* Add all screenshots
-* Fill SRN details
-* Verify GitHub repo
